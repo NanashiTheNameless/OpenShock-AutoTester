@@ -1,0 +1,95 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "OpenShock-AutoTester"
+version = "0.0.1"
+description = "Automatically run hardware tests on flashed OpenShock hubs"
+readme = "README.md"
+license = "AGPL-3.0-only"
+license-files = ["LICENSE"]
+authors = [
+  { name = "NanashiTheNameless" },
+  { name = "NanashiTheNameless", email = "NanashiTheNameless@NamelessNanashi.dev" },
+]
+maintainers = [
+  { name = "NanashiTheNameless" },
+  { name = "NanashiTheNameless", email = "NanashiTheNameless@NamelessNanashi.dev" },
+]
+keywords = ["openshock", "esp32", "hardware-testing", "tester"]
+requires-python = ">=3.12"
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Topic :: System :: Hardware :: Universal Serial Bus (USB)",
+  "Intended Audience :: Developers",
+  "Intended Audience :: End Users/Desktop",
+  "Intended Audience :: System Administrators",
+  "Natural Language :: English",
+  "Operating System :: MacOS",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Topic :: Software Development :: Embedded Systems",
+  "Topic :: System :: Hardware",
+  "Topic :: Utilities",
+  "Typing :: Typed",
+]
+dependencies = [
+  "esptool>=5.4.0",
+  "pyserial>=3.5",
+  "rich>=15.0.0",
+  "pywifi>=1.1.12; sys_platform == 'linux' or sys_platform == 'win32'",
+  "comtypes>=1.4.16; sys_platform == 'win32'",
+  "pyobjc-framework-CoreWLAN>=12.2.2; sys_platform == 'darwin'",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=9.1.1",
+  "pytest-cov>=7.1.0",
+  "pytest-mock>=3.15.1",
+  "black>=26.5.1",
+  "flake8>=7.3.0",
+  "mypy>=2.3.1",
+]
+
+[project.urls]
+Repository = "https://github.com/NanashiTheNameless/OpenShock-AutoTester"
+Homepage = "https://github.com/NanashiTheNameless/OpenShock-AutoTester"
+Issues = "https://github.com/NanashiTheNameless/OpenShock-AutoTester/issues"
+"GitHub Sponsor" = "https://github.com/sponsors/NanashiTheNameless"
+"Buy Me a Coffee" = "https://buymeacoffee.com/NamelessNanashi"
+Author = "https://github.com/NanashiTheNameless"
+"Liberapay" = "https://liberapay.com/NamelessNanashi"
+
+[project.scripts]
+OPSH-AutoTest = "openshock_autotester.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["-v", "--strict-markers"]
+
+[tool.setuptools]
+packages = ["openshock_autotester"]
+
+[tool.setuptools.package-data]
+openshock_autotester = ["py.typed"]
+
+[tool.black]
+line-length = 100
+target-version = ["py312", "py313", "py314"]
+
+[tool.mypy]
+python_version = "3.12"
+warn_unused_ignores = true
+ignore_missing_imports = true
+plugins = []
+[[tool.mypy.overrides]]
+module = ["esptool", "serial", "serial.tools"]
+ignore_missing_imports = true
