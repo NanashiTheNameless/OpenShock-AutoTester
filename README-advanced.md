@@ -375,7 +375,7 @@ mypy openshock_autotester/
 
 The project uses GitHub Actions for CI/CD:
 
-- **Tests Workflow** - Runs tests on Ubuntu, Windows, and macOS with Python 3.12-3.14
+- **Tests Workflow** - Runs tests on Ubuntu, Windows, and macOS with Python 3.12-3.15
 - **Publish Workflow** - Publishes to PyPI on release
 
 [Back to the main README](https://github.com/NanashiTheNameless/OpenShock-AutoTester/blob/main/README.md).

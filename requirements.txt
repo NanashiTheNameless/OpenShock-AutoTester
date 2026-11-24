@@ -1,6 +1,6 @@
-esptool>=5.4.0
+esptool>=5.7.0
 pyserial>=3.5
 rich>=15.0.0
 pywifi>=1.1.12; sys_platform == 'linux' or sys_platform == 'win32'
-comtypes>=1.4.16; sys_platform == 'win32'
-pyobjc-framework-CoreWLAN>=12.2.2; sys_platform == 'darwin'
+comtypes>=1.5.0; sys_platform == 'win32'
+pyobjc-framework-CoreWLAN>=13.1; sys_platform == 'darwin'
